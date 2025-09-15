@@ -1,4 +1,4 @@
-import Groups from '@/components/Groups/Groups';
+import Students from '@/components/Groups/Groups';
 import Page from '@/components/layout/Page/Page';
 import { type Metadata } from 'next/types';
 
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 const GroupsPage = (): React.ReactNode => (
   <Page>
-    <h1>Группы</h1>
-    <Groups />
+    <h1>Students</h1>
+    <Students />
     
   </Page>
 );
