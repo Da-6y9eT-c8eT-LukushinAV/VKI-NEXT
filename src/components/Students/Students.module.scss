@@ -1,9 +1,7 @@
-.Students {
-  
-}
+// components/Students/Students.module.scss
 .container {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
@@ -36,10 +34,6 @@
   padding: 14px 16px;
   border-bottom: 1px solid #e9ecef;
   color: #212529;
-}
-
-.table tr:hover {
-  background-color: #f8f9fa;
 }
 
 .loading {

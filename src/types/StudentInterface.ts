@@ -1,9 +1,11 @@
-interface Student {
-  id?: number; // AUTOINCREMENT, поэтому может не быть при создании
+// types/StudentInterface.ts
+interface StudentInterface {
+  id: number;
   first_name: string | null;
   last_name: string | null;
-  middle_name?: string | null; // опциональное поле
-  groupId?: number | null; // опциональное поле
-};
+  middle_name: string | null;
+  groupId: number | null;
+  group_name?: string;
+}
 
-export default Student;
+export default StudentInterface;

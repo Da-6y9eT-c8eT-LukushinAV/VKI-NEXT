@@ -1,10 +1,23 @@
+// components/Students/Students.tsx
 'use client';
 
+import { useState, useEffect } from 'react';
 import useStudents from '@/hooks/useStudents';
+import Student from './Student/Student';
 import styles from './Students.module.scss';
 
 const Students = (): React.ReactElement => {
   const { students, loading, error } = useStudents();
+  const [localStudents, setLocalStudents] = useState(students);
+
+  // Синхронизируем локальное состояние с данными из хука
+  useEffect(() => {
+    setLocalStudents(students);
+  }, [students]);
+
+  const handleDeleteStudent = (id: number) => {
+    setLocalStudents(prevStudents => prevStudents.filter(student => student.id !== id));
+  };
 
   if (loading) {
     return (
@@ -28,7 +41,7 @@ const Students = (): React.ReactElement => {
     <div className={styles.container}>
       <h1 className={styles.title}>Список студентов</h1>
       
-      {students.length === 0 ? (
+      {localStudents.length === 0 ? (
         <div className={styles.empty}>Студенты не найдены</div>
       ) : (
         <>
@@ -40,23 +53,22 @@ const Students = (): React.ReactElement => {
                 <th>Имя</th>
                 <th>Отчество</th>
                 <th>Группа</th>
+                <th>Действия</th>
               </tr>
             </thead>
             <tbody>
-              {students.map((student) => (
-                <tr key={student.id}>
-                  <td>{student.id}</td>
-                  <td>{student.last_name || '-'}</td>
-                  <td>{student.first_name || '-'}</td>
-                  <td>{student.middle_name || '-'}</td>
-                  <td>{student.group_name || 'Не указана'}</td>
-                </tr>
+              {localStudents.map((student) => (
+                <Student
+                  key={student.id}
+                  student={student}
+                  onDelete={handleDeleteStudent}
+                />
               ))}
             </tbody>
           </table>
 
           <div className={styles.count}>
-            Всего студентов: {students.length}
+            Всего студентов: {localStudents.length}
           </div>
         </>
       )}
