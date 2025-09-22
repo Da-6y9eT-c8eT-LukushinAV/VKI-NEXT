@@ -1,8 +1,8 @@
 -- Active: 1757917724197@@127.0.0.1@3306
-CREATE TABLE student(  
-    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    first_name TEXT,
-    last_name TEXT,
-    middle_name TEXT,
-    groupId INTEGER
-);
+INSERT INTO student (first_name, last_name, middle_name, groupId)
+VALUES 
+('Иван', 'Иванов', 'Иванович', 1),
+('Петр', 'Петров', 'Петрович', 1),
+('Мария', 'Сидорова', 'Алексеевна', 2),
+('Анна', 'Кузнецова', 'Сергеевна', 2),
+('Алексей', 'Смирнов', 'Дмитриевич', 3);
